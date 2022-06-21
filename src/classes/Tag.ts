@@ -1,4 +1,4 @@
-import { slugifyTitle } from "..";
+import { slugifyTitle } from "../util/logic";
 
 /**
  * @function
@@ -20,8 +20,9 @@ export class Tag {
   slug: string;
   constructor(node: string | { name: string; slug: string }) {
     if (typeof node === "string") {
-      this.name = reshapeCtflTag(node).name;
-      this.slug = reshapeCtflTag(node).slug;
+      const t = reshapeCtflTag(node);
+      this.name = t.name;
+      this.slug = t.slug;
     } else {
       this.name = node.name;
       this.slug = node.slug;
